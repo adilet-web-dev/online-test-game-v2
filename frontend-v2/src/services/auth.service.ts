@@ -1,6 +1,7 @@
 import axios from "axios";
+import {HOST} from "../../hosts";
 
-const DOMAIN = 'http://localhost:8000';
+const DOMAIN: string = `http://${HOST}`;
 
 interface User {
     username: string,

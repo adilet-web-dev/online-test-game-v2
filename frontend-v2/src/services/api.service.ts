@@ -1,9 +1,10 @@
 import axios from 'axios';
 import {Test} from "@/services/interfaces";
 import {authHeader} from "@/services/auth.service";
+import {HOST} from "../../hosts";
 
 
-const DOMAIN: string = 'http://localhost:8000';
+const DOMAIN: string = `http://${HOST}`;
 
 export class ApiService {
 

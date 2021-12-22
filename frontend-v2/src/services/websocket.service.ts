@@ -1,7 +1,9 @@
 import {playerEvents, creatorEvents} from "@/services/events";
 import {Settings, Player, Test} from "@/services/interfaces";
+import {HOST} from "../../hosts";
 
-const WS_DOMAIN: string = 'ws://localhost:8000';
+
+const WS_DOMAIN: string = `ws://${HOST}`;
 const ServerWebSocket = require('ws');
 
 const TESTING = false;
