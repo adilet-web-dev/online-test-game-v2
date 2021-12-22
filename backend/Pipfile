@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-channels = "*"
+django-restframework = "*"
+django-extensions = "*"
+ipython = "*"
+jupyter = "*"
+channels-redis = "*"
+factory-boy = "*"
+djangorestframework = "*"
+pytest-django = "*"
+pytest-asyncio = "*"
+djangorestframework-simplejwt = "*"
+django-cors-headers = "*"
+whitenoise = "*"
+dj-database-url = "*"
+psycopg2-binary = "*"
+
+[dev-packages]
+pretty-errors = "*"
+model-bakery = "*"
+
+[requires]
+python_version = "3.9"
