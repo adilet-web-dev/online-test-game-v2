@@ -163,8 +163,14 @@ export default class Creator extends Vue {
 
         case playerEvents.JOIN_PLAYER: {
 
-          self.players.push({name: data.name, score: 0});
-          self.ws.sendPlayers(self.players);
+          let isFound = self.players.some(function (player: Player): any {
+            if (player.name == data.name) return true;
+          })
+
+          if (!isFound){
+            self.players.push({name: data.name, score: 0});
+            self.ws.sendPlayers(self.players);
+          }
           break;
         }
 

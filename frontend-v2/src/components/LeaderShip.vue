@@ -36,7 +36,7 @@ export default class LeaderShip extends Vue {
      this.players.forEach(function (player) {
        all += player.score;
      })
-     return all / 100 * score;
+     return 100 / all * score;
 
    }
 }

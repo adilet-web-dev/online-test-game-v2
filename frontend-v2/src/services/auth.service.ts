@@ -3,6 +3,8 @@ import {HOST} from "../../hosts";
 
 const DOMAIN: string = `http://${HOST}`;
 
+import {app} from "@/main";
+
 interface User {
     username: string,
     password: string
