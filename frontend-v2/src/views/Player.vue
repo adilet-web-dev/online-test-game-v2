@@ -189,6 +189,7 @@ export default class Participant extends Vue {
           self.onFinish = true;
           self.onLeaderShip = false;
           self.onLobby = false;
+          self.ws.closeConnection();
           break;
         }
 
