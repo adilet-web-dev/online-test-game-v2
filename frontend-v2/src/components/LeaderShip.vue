@@ -15,7 +15,7 @@
                aria-valuemin="0"
                aria-valuemax="100">
           </div>
-          <h5><b>{{player.score}}</b></h5>
+          <h5><b>{{Math.ceil(player.score)}}</b></h5>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-from config.rooms import free_room_ids, open_room_ids
+from config.rooms import free_room_ids, open_room_ids, closed_room_ids
 
 
 class PlayerConsumer(AsyncWebsocketConsumer):
@@ -51,6 +51,13 @@ class PlayerConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
+
+        if self.is_creator:
+            if self.room_id in closed_room_ids:
+                closed_room_ids.remove(self.room_id)
+
+            if self.room_id not in open_room_ids:
+                open_room_ids.append(self.room_id)
 
     # Receive message from WebSocket
     async def receive(self, text_data=None, bytes_data=None):

@@ -5,7 +5,7 @@
 
   <h1><b>Победители!</b></h1>
   <h2 v-for="(player, index) in winners">
-    <b>{{index + 1}}. {{player.name}} - {{player.score}}</b>
+    <b>{{index + 1}}. {{player.name}} - {{Math.ceil(player.score)}}</b>
   </h2>
 
   <hr>
@@ -13,7 +13,7 @@
   <b><i>Остальные</i></b>
   <div v-for="(player, index) in players">
       <p>
-        <b>{{index + 4}}. {{player.name}} - {{player.score}}</b>
+        <b>{{index + 4}}. {{player.name}} - {{Math.ceil(player.score)}}</b>
       </p>
       <hr>
   </div>
