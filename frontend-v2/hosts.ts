@@ -1,1 +1,1 @@
-export const HOST: string = '127.0.0.1:8000';
+export const HOST: string = '178.128.160.127:8888';
