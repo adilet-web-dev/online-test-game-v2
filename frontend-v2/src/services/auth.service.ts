@@ -12,8 +12,9 @@ interface User {
 
 export function authHeader(){
 
-    if (sessionStorage.hasOwnProperty("token")) {
-        let token = sessionStorage.getItem('token');
+    app.$cookies?.isKey("token");
+    if (app.$cookies?.isKey("token")) {
+        let token = app.$cookies?.get("token");
         return 'Bearer ' + token;
     } else {
         return ''
@@ -21,12 +22,12 @@ export function authHeader(){
 }
 
 export function isAuthenticated(){
-    return sessionStorage.hasOwnProperty("token");
+    return app.$cookies?.isKey("token");
 }
 
 export class AuthService {
     isLoggedIn(): boolean{
-        return sessionStorage.hasOwnProperty("token");
+        return <boolean>app.$cookies?.isKey("token");
     }
 
     async login(user: User){
@@ -36,7 +37,8 @@ export class AuthService {
                 username: user.username,
                 password: user.password
             });
-            sessionStorage.setItem('token', response.data.access);
+
+            app.$cookies?.set('token', response.data.access);
 
             return {
                 status: response.status,

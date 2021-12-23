@@ -12,6 +12,7 @@ from cubes.api.serializers import TestSerializer
 class TestViewSet(ModelViewSet):
 	queryset = Test.objects.all()
 	serializer_class = TestSerializer
+	permission_classes = [IsAuthenticated]
 
 
 class RoomAPIViewSet(ViewSet):
