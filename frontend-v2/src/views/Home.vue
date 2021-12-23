@@ -6,7 +6,7 @@
     <p class="text-muted">чтобы создать игру вам нужно зарегистрироваться</p><br>
     <router-link to="/tests" class="btn btn-dark">Создатель</router-link>
     <br>
-    <router-link to="/player" class="btn btn-outline-dark">Игрок</router-link>
+    <router-link to="/player" class="btn btn-danger">Игрок</router-link>
 
   </div>
 </template>

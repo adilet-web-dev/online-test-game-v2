@@ -57,10 +57,19 @@
     </div>
     <div v-if="onFinish">
       <router-link to="/" class="btn btn-danger">Выйти</router-link>
-      <button v-if="settings.showAnswers" class="btn btn-dark">Посмотреть ответы</button>
+
+      <button v-if="settings.showAnswers"
+              v-on:click="onTestAnswers = true"
+              class="btn btn-dark">
+        Посмотреть ответы
+      </button>
+
       <h1>Победители!</h1>
-      <h1 v-for="player in winners"><b>{{player.name}}</b></h1>
+      <h1 v-for="player in winners">
+        <b>{{player.name}}</b>
+      </h1>
     </div>
+
     <div v-if="onTestAnswers">
       <router-link to="/" class="btn btn-danger">Выйти</router-link>
       <div v-for="question in test.questions">
@@ -186,7 +195,7 @@ export default class Participant extends Vue {
         case creatorEvents.SEND_TEST_ANSWERS: {
           self.test = data.test;
           self.onFinish = false;
-          self.onTestAnswers = true;
+          self.onTestAnswers = false;
           break;
         }
       }
