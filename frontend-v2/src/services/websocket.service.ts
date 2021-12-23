@@ -60,7 +60,7 @@ class BaseWebsocketService {
 
 class CreatorWS extends BaseWebsocketService{
     async connectToRoom(roomId: number): Promise<boolean> {
-        return await super.connect(`${WS_DOMAIN}/ws/cubes/${roomId}/creator`);
+        return await super.connect(`${WS_DOMAIN}/ws/games/${roomId}&action=create`);
     }
 
     sendPlayers(players: object[]) {
@@ -109,7 +109,7 @@ class CreatorWS extends BaseWebsocketService{
 class PlayerWS extends BaseWebsocketService{
     async joinToRoom(roomId: number, name: string) {
 
-        let connected: boolean = await super.connect(`${WS_DOMAIN}/ws/cubes/${roomId}/player`);
+        let connected: boolean = await super.connect(`${WS_DOMAIN}/ws/games/${roomId}&action=join`);
         let self = this;
         if (connected){
             self.send({event: playerEvents.JOIN_PLAYER, name: name});
