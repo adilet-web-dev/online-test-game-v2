@@ -170,8 +170,8 @@ export default class Creator extends Vue {
 
         case playerEvents.SEND_ANSWER: {
           self.addPointsToPlayer(data.player);
-          self.ws.sendPlayers(self.players);
           self.sortPlayersByScore();
+          self.ws.sendPlayers(self.players);
           break;
         }
 
