@@ -276,7 +276,7 @@ export default class Participant extends Vue {
 
   .true-inset {
     background: rgba(255,255,255,0.4);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(3px);
     height: 100%;
     width: 100%;
     text-align: center;
