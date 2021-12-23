@@ -14,4 +14,8 @@
   color: #2c3e50;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 </style>

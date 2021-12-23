@@ -286,9 +286,7 @@ export default class Participant extends Vue {
 
 .false-answer-screen {
   .screen();
-  background-color: black;
-  background-image: url("~@/assets/false_bg.png");
-  background-size: cover;
+  background-color: #000000;
   h1 {
     margin-top: 20%;
   }
