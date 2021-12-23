@@ -1,12 +1,14 @@
 <template>
-  <div class="main-player">
+  <div class="main-player onlogin">
     <br><br><br><br>
+
     <div v-if="websocketError">
       <b-alert show dismissible variant="danger">
         Вы ввели неправильный айди комнаты или у вас плохое соединение <br>
         попробуйте ещё раз
       </b-alert>
     </div>
+
     <div v-if="onLogin" class="ml-5 mr-5">
       <h3>Готовы играть!</h3>
       <p class="text-muted">Твоё имя</p>
@@ -16,11 +18,13 @@
       <br>
       <button class="btn btn-outline-dark" v-on:click="enterTheGame">Играть</button>
     </div>
+
     <div v-if="onLobby">
       <h3><strong>Подождите пока другие игроки войдут</strong></h3>
       <b><i>Игроки</i></b>
       <h4 v-for="player in players">{{player.name}}</h4>
     </div>
+
     <div v-if="onQuestion">
       <h5>{{ question.title }}</h5>
       <hr>
@@ -58,16 +62,8 @@
     <div v-if="onFinish">
       <router-link to="/" class="btn btn-danger">Выйти</router-link>
 
-      <button v-if="settings.showAnswers"
-              v-on:click="onTestAnswers = true"
-              class="btn btn-dark">
-        Посмотреть ответы
-      </button>
+      <Winners v-bind:winners="winners" v-bind:players="players.slice(3)"></Winners>
 
-      <h1>Победители!</h1>
-      <h1 v-for="player in winners">
-        <b>{{player.name}}</b>
-      </h1>
     </div>
 
     <div v-if="onTestAnswers">
@@ -82,10 +78,15 @@
     </div>
 
     <div v-if="onTrueAnswerScreen" class="true-answer-screen">
-      <h1>Правильно!</h1>
+      <div class="true-inset">
+        <h1>Правильно!</h1>
+      </div>
     </div>
     <div v-if="onFalseAnswerScreen" class="false-answer-screen">
-      <h1 style="color: aliceblue">Неправильно :(</h1>
+      <article class="false">
+        <h1 style="color: aliceblue">Неправильно :(</h1>
+      </article>
+
     </div>
 
   </div>
@@ -94,6 +95,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import LeaderShip from "@/components/LeaderShip.vue";
+import Winners from "@/components/Winners.vue";
 
 import {PlayerWS} from "@/services/websocket.service";
 import {Player, Settings, Question, Option, Test} from "@/services/interfaces";
@@ -101,7 +103,7 @@ import {creatorEvents} from "@/services/events";
 
 
 @Component({
-  components: {LeaderShip}
+  components: {LeaderShip, Winners}
 })
 export default class Participant extends Vue {
   ws = new PlayerWS();
@@ -267,18 +269,37 @@ export default class Participant extends Vue {
 
 .true-answer-screen {
   .screen();
+  background-image: url("~@/assets/true_bg.png");
+  background-size: cover;
   background-color: white;
-  h1 {
-    margin-top: 20%;
+  padding: 10%;
+
+  .true-inset {
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding-top: 30%;
   }
 }
 
 .false-answer-screen {
   .screen();
   background-color: black;
+  background-image: url("~@/assets/false_bg.png");
+  background-size: cover;
   h1 {
     margin-top: 20%;
   }
 }
+
+.onlogin {
+  background-image: url("~@/assets/phone_bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
 
 </style>

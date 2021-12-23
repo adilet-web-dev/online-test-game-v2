@@ -7,13 +7,14 @@ import tests from "@/router/routes/tests";
 
 import Login from "@/views/auth/Login.vue";
 
-import {isAuthenticated} from "@/services/auth.service";
+import {AuthService} from "@/services/auth.service";
 
+let auth_service = new AuthService();
 
 Vue.use(VueRouter);
 
 export function redirectIfNotAuthentication(to: any, from: any, next: Function) {
-  if (!isAuthenticated()){
+  if (!auth_service.isAuthenticated()){
     next({'name': 'login'});
   } else {
     next();

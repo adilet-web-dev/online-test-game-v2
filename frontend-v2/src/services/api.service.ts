@@ -1,7 +1,9 @@
 import axios from 'axios';
 import {Test} from "@/services/interfaces";
-import {authHeader} from "@/services/auth.service";
+import {AuthService} from "@/services/auth.service";
 import {HOST} from "../../hosts";
+
+let auth_service = new AuthService();
 
 
 const DOMAIN: string = `http://${HOST}`;
@@ -12,7 +14,7 @@ export class ApiService {
 
         const response = await axios.get(
             DOMAIN + '/api/v1/rooms/obtain_room/',
-            {headers: {'Authorization': authHeader()}}
+            {headers: {'Authorization': auth_service.authHeader()}}
         );
         return {
             status: response.status,
@@ -26,7 +28,7 @@ export class ApiService {
         const response = await axios.post(
             DOMAIN + '/api/v1/rooms/close_room/',
             {"room_id": roomId},
-            {headers: {'Authorization': authHeader()}}
+            {headers: {'Authorization': auth_service.authHeader()}}
         );
         return {
             status: response.status,
@@ -39,7 +41,7 @@ export class ApiService {
         try {
             const response = await axios.get(
                 DOMAIN + '/api/v1/tests/' + testId,
-                {headers: {'Authorization': authHeader()}}
+                {headers: {'Authorization': auth_service.authHeader()}}
             );
 
             return {
@@ -61,7 +63,7 @@ export class ApiService {
         const response = await axios.post(
             DOMAIN + '/api/v1/tests/',
             test,
-            {headers: {'Authorization': authHeader()}}
+            {headers: {'Authorization': auth_service.authHeader()}}
         );
         return {
             status: response.status
@@ -84,7 +86,7 @@ export class ApiService {
         try{
             const response = await axios.get(
                 DOMAIN + '/api/v1/tests/',
-                {headers: {'Authorization': authHeader()}}
+                {headers: {'Authorization': auth_service.authHeader()}}
             );
             data.status = response.status;
             data.tests = response.data;

@@ -28,10 +28,10 @@
             <div class="col-6">
               <button v-on:click="$router.push('tests/' + test.id)" class="btn btn-outline-dark mybtn">обзор</button>
               <br>
-              <button v-on:click="$router.push({'name': 'test edit', params: {'id': test.id}})"
-                      class="btn btn-primary mybtn">
-                редактировать
-              </button>
+<!--              <button v-on:click="$router.push({'name': 'test edit', params: {'id': test.id}})"-->
+<!--                      class="btn btn-primary mybtn">-->
+<!--                редактировать-->
+<!--              </button>-->
             </div>
           </div>
 

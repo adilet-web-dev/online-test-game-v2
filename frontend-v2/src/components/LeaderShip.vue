@@ -1,9 +1,11 @@
 <template>
-<div>
+<div class="mr-3">
   <h5>Рейтинг игроков</h5>
   <div v-for="player in players">
     <div class="row">
-      <div class="col-2"><h3>{{player.name}}</h3></div>
+      <div class="col-4">
+        <h5 class="ml-1 mr-1">{{player.name}}</h5>
+      </div>
       <div class="col-8">
         <div class="progress" style="height: 30px; margin-bottom: 10px">
           <div class="progress-bar bg-dark"

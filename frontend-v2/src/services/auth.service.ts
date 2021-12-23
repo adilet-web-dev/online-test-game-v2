@@ -4,30 +4,29 @@ import {HOST} from "../../hosts";
 const DOMAIN: string = `http://${HOST}`;
 
 import {app} from "@/main";
+import {Vue} from "vue-property-decorator";
 
 interface User {
     username: string,
     password: string
 }
 
-export function authHeader(){
 
-    app.$cookies?.isKey("token");
-    if (app.$cookies?.isKey("token")) {
-        let token = app.$cookies?.get("token");
-        return 'Bearer ' + token;
-    } else {
-        return ''
+export class AuthService extends Vue{
+    authHeader(){
+
+
+        this.$cookies.isKey("token");
+        if (this.$cookies.isKey("token")) {
+            let token = this.$cookies.get("token");
+            return 'Bearer ' + token;
+        } else {
+            return ''
+        }
     }
-}
 
-export function isAuthenticated(){
-    return app.$cookies?.isKey("token");
-}
-
-export class AuthService {
-    isLoggedIn(): boolean{
-        return <boolean>app.$cookies?.isKey("token");
+    isAuthenticated(){
+        return this.$cookies.isKey("token");
     }
 
     async login(user: User){

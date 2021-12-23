@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-5">
     <div v-if="onLobby">
 <!--  Waiting for players to join the game and configure  -->
 
@@ -68,8 +68,7 @@
       </div>
     </div>
     <div v-if="onFinish">
-      <h1>Победители!</h1>
-      <h1 v-for="player in winners"><b>{{player.name}}</b></h1>
+      <Winners v-bind:winners="winners" v-bind:players="players.slice(3)"></Winners>
     </div>
   </div>
 
@@ -80,6 +79,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 import LeaderShip from '@/components/LeaderShip.vue';
+import Winners from "@/components/Winners.vue";
 
 import {CreatorWS} from "@/services/websocket.service";
 import {ApiService} from "@/services/api.service";
@@ -90,6 +90,7 @@ import {Player, Question, Settings} from "@/services/interfaces";
 @Component({
   components: {
     LeaderShip,
+    Winners
   },
 })
 export default class Creator extends Vue {
@@ -121,6 +122,7 @@ export default class Creator extends Vue {
 
   async beforeMount(){
       let response = await this.api.getTest(this.$route.params.id);
+      if (response.status == 401) this.$router.push({"name": "login"});
       this.test = response.test;
   }
 
@@ -129,6 +131,7 @@ export default class Creator extends Vue {
     // create game room and show room id
     let self = this;
     let response = await this.api.obtainRoomId();
+    if (response.status == 401) this.$router.push({"name": "login"});
 
     this.ws.connectToRoom(response.room_id)
       .then(function (connection) {
