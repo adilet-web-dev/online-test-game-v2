@@ -27,8 +27,8 @@ import {Player} from "@/services/interfaces";
 
 @Component
 export default class Winners extends Vue {
-   @Prop(Array) winners: Player[];
-   @Prop(Array) players: Player[];
+   @Prop(Array) winners!: Player[];
+   @Prop(Array) players!: Player[];
 
 
 }
