@@ -216,9 +216,9 @@ export default class Creator extends Vue {
 
   async runQuestionAndTimerLoop(){
     /**
-    this method is responsible for sending questions every n seconds
-    and finish the game if there are no questions left
-    */
+    *this method is responsible for sending questions every n seconds
+    *and finish the game if there are no questions left
+    **/
     this.time = 100;
 
     let unit = 10 / this.settings.maxTime;

@@ -15,8 +15,6 @@ interface User {
 export class AuthService extends Vue{
     authHeader(){
 
-
-        this.$cookies.isKey("token");
         if (this.$cookies.isKey("token")) {
             let token = this.$cookies.get("token");
             return 'Bearer ' + token;
@@ -67,8 +65,7 @@ export class AuthService extends Vue{
     }
 
     async logout(){
-        sessionStorage.removeItem('token');
+        this.$cookies.remove('token');
     }
-
 
 }

@@ -24,9 +24,3 @@ export const creatorEvents = {
     FINISH_GAME: 'finish game',
     SEND_TEST_ANSWERS: 'send test answers'
 };
-
-export const otherEvents = {
-    NOT_AUTHENTICATED: '401',
-};
-
-

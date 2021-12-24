@@ -16,10 +16,23 @@ class BaseWebsocketService {
 
         const self = this;
 
-
-        // since the connection is established for a long time,
-        // every 0.1 second it is checked that the connection is established,
-        // if yes, then the promise will return true
+        /**
+         * since the connection is established for a long time and
+         * it passes control to another peace of code even if the connection
+         * has not been established,
+         * every 0.1 second it is checked that the connection is established,
+         * if yes, then the you can use you function inside Promise's then method
+         * @example
+         * ws.connect("127.0.0.1:8000")
+         * .then(function(success){
+         *     doSomething();
+         *     ...
+         * })
+         * .catch(function(error){
+         *     handleError(error);
+         *     ...
+         * }
+         **/
         return new Promise<boolean>((resolve, reject) => {
 
             if (TESTING){
@@ -60,7 +73,7 @@ class BaseWebsocketService {
 
 class CreatorWS extends BaseWebsocketService{
     async connectToRoom(roomId: number): Promise<boolean> {
-        return await super.connect(`${WS_DOMAIN}/ws/games/${roomId}&action=create`);
+        return await this.connect(`${WS_DOMAIN}/ws/games/${roomId}&action=create`);
     }
 
     sendPlayers(players: object[]) {
@@ -109,7 +122,7 @@ class CreatorWS extends BaseWebsocketService{
 class PlayerWS extends BaseWebsocketService{
     async joinToRoom(roomId: number, name: string) {
 
-        let connected: boolean = await super.connect(`${WS_DOMAIN}/ws/games/${roomId}&action=join`);
+        let connected: boolean = await this.connect(`${WS_DOMAIN}/ws/games/${roomId}&action=join`);
         let self = this;
         if (connected){
             self.send({event: playerEvents.JOIN_PLAYER, name: name});
