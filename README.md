@@ -80,3 +80,6 @@ Daphne для запуска в продакшене - https://github.com/django
 Vue-class-component Чтобы использовать TypeScript вместе с Vue - https://class-component.vuejs.org/
 
 Bootstrap-vue тотже бутстрап чтобы красиво было :) - https://bootstrap-vue.org/
+
+
+#### Насчёт 1 версии, там я написал плохой код и переписал в эту более лучшую версию 
