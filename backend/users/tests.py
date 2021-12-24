@@ -27,6 +27,22 @@ class TestSignUp(TestCase):
 
 		self.assertEqual(response.status_code, 400)
 
+	def test_it_cannot_use_invitation_twice(self):
+		invitation = baker.make(Invitation)
+		user = UserFactory()
+		self.client.post(reverse("signup", args=[invitation.public_id]), {
+			"username": user.username,
+			"password": user.password
+		})
+
+		user2 = UserFactory()
+		response = self.client.post(reverse("signup", args=[invitation.public_id]), {
+			"username": user2.username,
+			"password": user2.password
+		})
+
+		self.assertEqual(response.status_code, 401)
+
 	def test_it_does_not_create_account_by_wrong_invitation(self):
 		public_id = "gfaskjajkr4k7r3ark8a32g23872k3"
 		response = self.client.post(reverse("signup", args=[public_id]), {

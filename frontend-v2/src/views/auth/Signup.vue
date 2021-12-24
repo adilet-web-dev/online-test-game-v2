@@ -9,7 +9,7 @@
     <div class="inputs">
         <input v-model="username" type="text" class="form-control" placeholder="имя"><br>
         <input v-model="password" type="password" class="form-control" placeholder="пароль"><br>
-        <input v-model="password" type="password" class="form-control" placeholder="повторите пароль"><br>
+        <input v-model="password2" type="password" class="form-control" placeholder="повторите пароль"><br>
     </div>
     <button v-on:click="signup" class="btn btn-dark">Зарегистрироваться</button>
     <br>
