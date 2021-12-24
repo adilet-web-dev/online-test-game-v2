@@ -5,9 +5,10 @@ import Player from '../views/Player.vue';
 import Creator from "../views/Creator.vue";
 import tests from "@/router/routes/tests";
 
-import Login from "@/views/auth/Login.vue";
+import About from "@/views/About.vue";
 
 import {AuthService} from "@/services/auth.service";
+import auth from "@/router/routes/auth";
 
 let auth_service = new AuthService();
 
@@ -39,11 +40,12 @@ const routes: RouteConfig[] = [
     beforeEnter: redirectIfNotAuthentication
   },
   {
-    path: '/login',
-    name: 'login',
-    component: Login
+    path: '/about',
+    name: 'about',
+    component: About
   },
   ...tests,
+  ...auth
 
 
 ];

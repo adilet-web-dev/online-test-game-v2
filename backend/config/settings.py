@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
 
-    'cubes.apps.CubesConfig'
+    'cubes.apps.CubesConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [

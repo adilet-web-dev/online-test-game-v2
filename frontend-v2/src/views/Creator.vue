@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-3">
           <p class="text-muted">Айди комнаты</p>
-          <h3><strong>{{roomId}}</strong></h3>
+          <h2><strong>{{roomId}}</strong></h2>
           <hr>
           <h5><b>{{players.length}} игроков вошли</b></h5>
           <h6>{{ test.name }}</h6>
@@ -32,17 +32,20 @@
 
         </div>
 
-        <div class="col-6 text-left">
+        <div class="col-6 text-left mt-3">
+          <h3><b>Игроки</b></h3>
           <h4 v-for="player in players">{{player.name}}</h4>
         </div>
 
         <div class="col-3">
           <button class="btn btn-dark" v-on:click="startGame">Начать</button>
           <br><br>
-          <button class="btn btn-danger">Выйти</button>
+          <button class="btn btn-danger" v-on:click="$router.push('/')">Выйти</button>
         </div>
       </div>
     </div>
+
+
     <div v-if="onGame">
       <div class="progress" style="height: 5px; margin-bottom: 10px">
         <div class="progress-bar bg-dark"
@@ -63,13 +66,15 @@
           <LeaderShip v-bind:players="players"></LeaderShip>
         </div>
         <div class="col-3">
-          <button class="btn btn-dark" v-on:click="nextPermanently">Следующий вопрос</button>
+          <button class="btn btn-dark" v-on:click="stopTheTimerPermanently">Следующий вопрос</button>
         </div>
       </div>
     </div>
+
     <div v-if="onFinish">
       <Winners v-bind:winners="winners" v-bind:players="players.slice(3)"></Winners>
     </div>
+
   </div>
 
 
@@ -166,11 +171,11 @@ export default class Creator extends Vue {
 
         case playerEvents.JOIN_PLAYER: {
 
-          let isFound = self.players.some(function (player: Player): any {
+          let inPlayersAlready = self.players.some(function (player: Player): any {
             if (player.name == data.name) return true;
           })
 
-          if (!isFound){
+          if (!inPlayersAlready){
             self.players.push({name: data.name, score: 0});
             self.ws.sendPlayers(self.players);
           }
@@ -205,7 +210,7 @@ export default class Creator extends Vue {
     this.ws.sendQuestion(this.currentQuestion);
   }
 
-  nextPermanently(){
+  stopTheTimerPermanently(){
     this.time = 0;
   }
 
@@ -225,6 +230,7 @@ export default class Creator extends Vue {
 
         if (this.currentQuestionNumber == this.test.questions.length - 1){
           this.finishTheGame();
+          // stop the loop
           clearInterval(intervalId);
         } else {
           this.currentQuestionNumber++;
@@ -270,5 +276,8 @@ export default class Creator extends Vue {
 </script>
 
 <style lang="less">
-
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
 </style>

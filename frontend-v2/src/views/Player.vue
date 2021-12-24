@@ -117,7 +117,7 @@ export default class Participant extends Vue {
 
   onTrueAnswerScreen = false;
   onFalseAnswerScreen = false;
-  answerScreenTime = 1500;
+  answerScreenTime = 1600;
 
   name = "";
   score = 0;
@@ -139,12 +139,12 @@ export default class Participant extends Vue {
 
   websocketError = false;
 
-  async enterTheGame(){
+  enterTheGame(){
 
     let self = this;
 
     this.ws.joinToRoom(this.roomId, this.name)
-        .then(function (response) {
+        .then(function (success) {
           self.setEvents();
           self.onLogin = false;
           self.onLobby = true;
@@ -229,11 +229,13 @@ export default class Participant extends Vue {
         this.score += this.time;
       }
       this.sendAnswer();
+      // show true screen
       this.onTrueAnswerScreen = true;
       setTimeout(() => {this.onTrueAnswerScreen = false}, this.answerScreenTime);
     }
     else {
       this.sendAnswer();
+      // show false screen
       this.onFalseAnswerScreen = true;
       setTimeout(() => {this.onFalseAnswerScreen = false}, this.answerScreenTime);
     }

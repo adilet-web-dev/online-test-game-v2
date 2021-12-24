@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+from django.db import transaction
 
 from cubes.models import Test, Question, Option
 
@@ -36,6 +37,7 @@ class TestSerializer(ModelSerializer):
 
 		return test
 
+	@transaction.atomic
 	def update(self, instance: Test, validated_data):
 
 		instance.questions.all().delete()

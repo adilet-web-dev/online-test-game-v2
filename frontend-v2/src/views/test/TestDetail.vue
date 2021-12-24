@@ -1,15 +1,36 @@
 <template>
   <div>
     <Navbar></Navbar>
-    <h3>{{test.name}}</h3>
-    <div v-for="question in test.questions" class="text-left ml-5">
-      <h4><b>{{question.title}}</b></h4>
-      <div v-for="option in question.options">
-        <p v-bind:class="option.is_true ? 'text-success text-decoration-underline' : ''">
-          {{option.answer}}
-        </p>
+    <div class="test-detail">
+      <h3>{{test.name}}</h3>
+      <hr>
+      <hr>
+      <div v-for="(question, index) in test.questions" class="text-left ml-5">
+        <h5><b>{{index + 1}}. {{question.title}}</b></h5>
+
+        <div class="row">
+          <div class="col-6">
+            <p v-bind:class="question.options[0].is_true ? 'text-success text-decoration-underline' : ''">
+              {{question.options[0].answer}}
+            </p>
+            <p v-bind:class="question.options[1].is_true ? 'text-success text-decoration-underline' : ''">
+              {{question.options[1].answer}}
+            </p>
+          </div>
+          <div class="col-6">
+            <p v-bind:class="question.options[2].is_true ? 'text-success text-decoration-underline' : ''">
+              {{question.options[2].answer}}
+            </p>
+            <p v-bind:class="question.options[3].is_true ? 'text-success text-decoration-underline' : ''">
+              {{question.options[3].answer}}
+            </p>
+          </div>
+        </div>
+
+        <hr>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -38,5 +59,8 @@ export default class TestDetail extends Vue {
 </script>
 
 <style scoped>
-
+.test-detail {
+  padding-left: 10%;
+  padding-right: 10%;
+}
 </style>

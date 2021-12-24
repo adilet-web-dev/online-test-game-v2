@@ -51,6 +51,21 @@ export class AuthService extends Vue{
         }
     }
 
+    async signup(user: User, uuid: string){
+
+        try {
+            let response = await axios.post(DOMAIN + '/users/signup/' + uuid, {
+                username: user.username,
+                password: user.password
+            });
+
+            return response.status
+
+        } catch (e) {
+            return e.response.status
+        }
+    }
+
     async logout(){
         sessionStorage.removeItem('token');
     }

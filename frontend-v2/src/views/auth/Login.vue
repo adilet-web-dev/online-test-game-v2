@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="block">
     <br><br><br>
     <h3><b>Войдите чтобы продолжить</b></h3><br>
     <b-alert v-if="validationError" show variant="danger" dismissible>Неправильное имя или пароль</b-alert>
@@ -45,6 +45,15 @@ export default class Login extends Vue{
 <style lang="less">
 .inputs {
   padding: 25px;
+}
+
+.block {
+  background-image: url("~@/assets/bg.jpg");
+  background-size: cover;
+  height: 100vh;
+  padding-left: 25%;
+  padding-right: 25%;
+
 }
 
 </style>
