@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="test-create">
 
     <Navbar></Navbar>
 
@@ -141,5 +141,8 @@ export default class TestCreate extends Vue {
 </script>
 
 <style scoped>
-
+.test-create {
+  padding-left: 8%;
+  padding-right: 8%;
+}
 </style>
