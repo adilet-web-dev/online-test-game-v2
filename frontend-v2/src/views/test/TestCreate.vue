@@ -18,31 +18,31 @@
     <hr>
 
     <button class="btn btn-dark" v-on:click="sendTest">Создать тест</button>
-
+    <br>
     <div class="row">
       <div class="col-6">
             <!--  Question input  -->
         <div>
-          <input class="form-control" placeholder="question" required v-model="currentQuestionTitle">
+          <input class="form-control" placeholder="вопрос" required v-model="currentQuestionTitle">
 
           <hr>
 
 
               <input class="form-control" placeholder="вариант 1" required v-model="options[0].answer">
               <input type="radio" id="option0" value=0 v-model="correctOption" class="isTrue">
-              <label for="option0">правильный ответ</label>
+              <label for="option0">ответ</label>
 
               <input class="form-control" placeholder="вариант 2" required v-model="options[1].answer">
               <input type="radio" id="option1" value=1 v-model="correctOption" class="isTrue">
-              <label for="option1">правильный ответ</label>
+              <label for="option1">ответ</label>
 
               <input class="form-control" placeholder="вариант 3" required v-model="options[2].answer">
               <input type="radio" id="option2" value=2 v-model="correctOption" class="isTrue">
-              <label for="option2">правильный ответ</label>
+              <label for="option2">ответ</label>
 
               <input class="form-control" placeholder="вариант 4" required v-model="options[3].answer">
               <input type="radio" id="option3" value=3 v-model="correctOption" class="isTrue">
-              <label for="option3">правильный ответ</label>
+              <label for="option3">ответ</label>
           <br>
 
           <button class="btn btn-outline-dark" v-on:click="addQuestion">Добавить</button>
@@ -53,10 +53,9 @@
             <!--  Question list  -->
 
         <div >
-          <div class="row" v-for="question in test.questions">
-
-            <h3 class="text-center">{{question.title}}</h3>
-            <br>
+          <div v-for="question in test.questions">
+            <hr>
+            <h5 class="text-center">{{question.title}}</h5>
             <div class="row">
               <div class="col-6">
                 <b v-bind:class="question.options[0].is_true ? 'text-success text-decoration-underline' : ''">{{question.options[0].answer}}</b> <br>
@@ -110,7 +109,7 @@ export default class TestCreate extends Vue {
 
     this.options.forEach(function (option, index) {
       if (index == self.correctOption){
-        option.is_true = true
+        option.is_true = true;
       }
     })
 
