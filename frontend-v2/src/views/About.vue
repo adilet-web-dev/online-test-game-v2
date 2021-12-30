@@ -32,6 +32,9 @@ export default class About extends Vue {
 </script>
 
 <style scoped>
+body {
+  background-color: black !important;
+}
 .block {
   color: white;
   height: 100vh;
