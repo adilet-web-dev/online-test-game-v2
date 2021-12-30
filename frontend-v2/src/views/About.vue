@@ -33,9 +33,10 @@ export default class About extends Vue {
 
 <style scoped>
 .block {
+  color: white;
   height: 100vh;
   width: 100vw;
-
+  background-color: black;
   text-align: center;
 
 }
