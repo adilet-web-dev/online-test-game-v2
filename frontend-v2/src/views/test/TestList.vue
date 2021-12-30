@@ -9,7 +9,7 @@
       <div class="col-4"></div>
       <div class="col-4"><h3>Список тестов</h3></div>
       <div class="col-4">
-        <router-link :to="{name: 'test create'}" class="btn btn-outline-dark">Создать тест</router-link>
+        <router-link :to="{name: 'test create'}" class="btn btn-outline-dark">Создать</router-link>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
       <div class="row">
         <hr>
         <div class="col-4">
-          <h5><b>{{test.name}}</b></h5>
+          <router-link v-bind:to="'tests/' + test.id" class="test-link"><h6><b>{{test.name}}</b></h6></router-link>
         </div>
         <div class="col-4">
           <div class="row">
@@ -26,12 +26,9 @@
               <p>{{test.questions.length}} вопросов</p>
             </div>
             <div class="col-6">
-              <button v-on:click="$router.push('tests/' + test.id)" class="btn btn-outline-dark mybtn">обзор</button>
+<!--              <button v-on:click="$router.push('tests/' + test.id)" class="btn btn-outline-dark mybtn">обзор</button>-->
               <br>
-<!--              <button v-on:click="$router.push({'name': 'test edit', params: {'id': test.id}})"-->
-<!--                      class="btn btn-primary mybtn">-->
-<!--                редактировать-->
-<!--              </button>-->
+
             </div>
           </div>
 
@@ -88,4 +85,13 @@ export default class TestList extends Vue {
   height: 40px;
 }
 
+.test-link:link {
+  color: black;
+  text-decoration: underline;
+}
+
+.test-link:visited {
+  color: gray;
+  text-decoration: underline;
+}
 </style>

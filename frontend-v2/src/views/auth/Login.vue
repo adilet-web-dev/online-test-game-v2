@@ -44,8 +44,8 @@ export default class Login extends Vue{
 
 <style lang="less">
 
-@desktop:   ~"only screen and (min-width: 960px) and (max-width: 1199px)";
-@phone:    ~"only screen and (min-width: 20px) and (max-width: 559px)";
+@desktop:   ~"only screen and (min-width: 1160px) and (max-width: 2199px)";
+@phone:    ~"only screen and (min-width: 20px) and (max-width: 859px)";
 
 
 .inputs {
@@ -68,8 +68,8 @@ export default class Login extends Vue{
 
 @media @phone {
   .block {
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-left: 3% !important;
+    padding-right: 3% !important;
   }
 }
 
