@@ -43,6 +43,11 @@ export default class Login extends Vue{
 </script>
 
 <style lang="less">
+
+@desktop:   ~"only screen and (min-width: 960px) and (max-width: 1199px)";
+@phone:    ~"only screen and (min-width: 20px) and (max-width: 559px)";
+
+
 .inputs {
   padding: 25px;
 }
@@ -51,9 +56,21 @@ export default class Login extends Vue{
   background-image: url("~@/assets/bg.jpg");
   background-size: cover;
   height: 100vh;
-  padding-left: 25%;
-  padding-right: 25%;
 
+}
+
+@media @desktop {
+  .block {
+    padding-right: 25%;
+    padding-left: 25%;
+  }
+}
+
+@media @phone {
+  .block {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
 }
 
 </style>
