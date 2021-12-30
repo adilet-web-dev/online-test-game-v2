@@ -35,7 +35,13 @@ export class AuthService extends Vue{
                 password: user.password
             });
 
-            app.$cookies?.set('token', response.data.access);
+            let expireIn = new Date(new Date().getTime() + 3600 * 60 * 1000);
+
+            app.$cookies?.set(
+                'token',
+                response.data.access,
+                {expires: expireIn}
+            );
 
             return {
                 status: response.status,

@@ -60,14 +60,25 @@ export class ApiService {
     }
 
     public async createTest(test: Test){
-        const response = await axios.post(
-            DOMAIN + '/api/v1/tests/',
-            test,
-            {headers: {'Authorization': auth_service.authHeader()}}
-        );
-        return {
-            status: response.status
+
+        try {
+            const response = await axios.post(
+                DOMAIN + '/api/v1/tests/',
+                test,
+                {headers: {'Authorization': auth_service.authHeader()}}
+            );
+            return {
+                status: response.status
+            }
+        } catch (e) {
+            if (e.response != undefined){
+                // even if it's error but server has responded and it has a status
+                return {status: e.response.status};
+            } else {
+                return {status: 405} // server error
+            }
         }
+
     }
 
     public async updateTest(test: Test, testId: number){

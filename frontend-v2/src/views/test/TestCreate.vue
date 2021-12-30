@@ -103,6 +103,8 @@ export default class TestCreate extends Vue {
 
   api = new ApiService();
 
+  authError = false;
+
   addQuestion() {
 
     let self = this;
@@ -130,7 +132,10 @@ export default class TestCreate extends Vue {
     let response = await this.api.createTest(this.test);
     if (response.status == 201){
       this.$router.push({'name': 'testList'});
-    } else {
+    } else if (response.status == 401) {
+      this.authError = true;
+    }
+    else {
       this.error = true;
     }
 
