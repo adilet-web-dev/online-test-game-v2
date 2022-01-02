@@ -88,15 +88,16 @@ export class ApiService {
         )
     }
 
-    public async getTestList() {
+    public async getTestList(url = '/api/v1/tests/') {
         let data =  {
             status: 0,
             tests: [],
         };
 
         try{
+
             const response = await axios.get(
-                DOMAIN + '/api/v1/tests/',
+                DOMAIN + url,
                 {headers: {'Authorization': auth_service.authHeader()}}
             );
             data.status = response.status;
@@ -113,6 +114,19 @@ export class ApiService {
 
         return data;
 
+    }
+
+    public async getUserTestList(){
+        return this.getTestList('/api/v1/tests/get_user_tests/');
+    }
+
+    public async checkTestOwner(id: number): Promise<boolean> {
+        const response = await axios.get(
+            DOMAIN + '/api/v1/tests/check_owner/' + id,
+            {headers: {'Authorization': auth_service.authHeader()}}
+        )
+
+        return response.data;
     }
 
 }

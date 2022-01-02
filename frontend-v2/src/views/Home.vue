@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar></Navbar>
-    <h1><b>Проходить тесты можно увлекательно!</b></h1>
+    <h3><b>Проходить тесты можно увлекательно!</b></h3>
     <h4>Какая у вас роль?</h4>
     <p class="text-muted">чтобы создать игру вам нужно зарегистрироваться</p><br>
     <router-link to="/tests" class="btn btn-dark">Создатель</router-link>

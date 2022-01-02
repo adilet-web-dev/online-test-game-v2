@@ -20,15 +20,15 @@
           <p>Максимальное время</p>
           <input type="number" class="form-control" v-model="settings.maxTime">
           <br>
-          <div class="form-check form-switch">
-            <input type="checkbox" id="switch1"  v-model="settings.bonus">
-            <label class="form-check-label" for="switch1">Давать бонусы за оставшееся время</label>
-          </div>
+
+          <b-form-checkbox v-model="settings.bonus" name="check-button" switch>
+            Давать бонусы за оставшееся время
+          </b-form-checkbox>
+
+          <b-form-checkbox v-model="settings.showAnswers" name="check-button" switch>
+            Показать ответы в конце теста
+          </b-form-checkbox>
           <br>
-          <div class="form-check form-switch">
-            <input type="checkbox" id="switch2" v-model="settings.showAnswers">
-            <label class="form-check-label" for="switch2">Показать ответы в конце теста</label>
-          </div>
 
         </div>
 

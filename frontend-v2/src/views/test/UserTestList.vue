@@ -38,7 +38,7 @@ import Navbar from "@/components/Navbar.vue";
 @Component({
   components: {Navbar}
 })
-export default class TestList extends Vue {
+export default class UserTestList extends Vue {
 
   tests = [];
   error = false;
@@ -50,9 +50,10 @@ export default class TestList extends Vue {
     this.$router.push("/creator/"+ id);
   }
 
+
   async mounted(){
 
-    let response = await this.api.getTestList();
+    let response = await this.api.getUserTestList();
 
     if (response.status == 401) this.$router.push('/login');
     if (response.status == 405) this.error = true;

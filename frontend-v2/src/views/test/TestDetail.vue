@@ -2,7 +2,7 @@
   <div>
     <Navbar></Navbar>
     <div class="test-detail">
-      <h3>{{test.name}}</h3>
+      <h4>{{test.name}}</h4>
       <hr>
       <hr>
       <div v-for="(question, index) in test.questions" class="text-left ml-5">

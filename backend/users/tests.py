@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.shortcuts import reverse
+from rest_framework import status
 from model_bakery import baker
 
 from users.factories import UserFactory
@@ -41,7 +42,7 @@ class TestSignUp(TestCase):
 			"password": user2.password
 		})
 
-		self.assertEqual(response.status_code, 401)
+		self.assertEqual(response.status_code, 400)
 
 	def test_it_does_not_create_account_by_wrong_invitation(self):
 		public_id = "gfaskjajkr4k7r3ark8a32g23872k3"

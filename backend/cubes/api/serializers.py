@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework.fields import CurrentUserDefault
 from django.db import transaction
 
 from cubes.models import Test, Question, Option
@@ -32,7 +33,10 @@ class TestSerializer(ModelSerializer):
 				)
 
 	def create(self, validated_data):
-		test = Test.objects.create(name=validated_data.get('name'))
+		test = Test.objects.create(
+			name=validated_data.get('name'),
+			author=self.context['user']
+		)
 		self._save_questions_and_options(validated_data, test)
 
 		return test
