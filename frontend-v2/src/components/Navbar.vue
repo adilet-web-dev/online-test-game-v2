@@ -1,8 +1,16 @@
 <template>
 <div>
   <div id="nav" class="text-left">
-    <a v-b-toggle.sidebar-1 class="text-dark"><b-icon-list class="h1 cm-animate-fat-cursor"></b-icon-list></a>
-    <b-sidebar id="sidebar-1" title="Меню" shadow bg-variant="dark" text-variant="light">
+    <a v-b-toggle.sidebar-1 class="text-dark" ><b-icon-list class="h1 cm-animate-fat-cursor"></b-icon-list></a>
+    <b-sidebar
+        id="sidebar-1"
+        title="Меню"
+        shadow
+        backdrop
+        bg-variant="dark"
+        text-variant="light"
+        backdrop-variant="dark"
+    >
       <div class="px-3 py-2">
 
         <router-link to="/" class="router">Главная</router-link><br>
