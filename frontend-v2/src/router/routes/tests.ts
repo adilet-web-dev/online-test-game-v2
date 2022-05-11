@@ -1,5 +1,5 @@
 import TestList from "@/views/test/TestList.vue";
-import UserTestList from "@/views/test/UserTestList";
+import UserTestList from "@/views/test/UserTestList.vue";
 import TestDetail from "@/views/test/TestDetail.vue";
 import TestCreate from "@/views/test/TestCreate.vue";
 
