@@ -6,7 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "jest"
+    "test:unit": "jest",
+
+    "postinstall": "npm run build",
+    "start": "node server.js"
   },
   "dependencies": {
     "@babel/cli": "^7.16.0",
@@ -17,7 +20,9 @@
     "babel-jest": "^27.4.4",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
+    "express": "^4.18.1",
     "register-service-worker": "^1.7.1",
+    "serve-static": "^1.15.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-cookies-ts": "^1.5.19",
